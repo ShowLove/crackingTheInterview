@@ -17,7 +17,7 @@ char* getString(void) {
 	if (str == NULL)
    {
 	 return NULL; // out of memory
-	}
+   }
 
 	char c = '\0';
 	int i = 0;
