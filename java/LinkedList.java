@@ -1,11 +1,3 @@
-// Sean Szumlanski
-// COP 3503, Fall 2013
-// Adapted from class on Wednesday, August 28.
-
-// LinkedList.java
-// ===============
-// This is a very powerful implementation of linked lists that lets you cram
-// *any* type of data into your nodes. We achieve this using "generics" in Java.
 
 
 import java.io.*;
@@ -109,18 +101,17 @@ public class LinkedList<AnyType> {
 		return helper;
 	}
 	
+	//This eliminates the duplicates in O(n^2)
 	void deleteDuplicates( LinkedList<Integer> L1 )
 	{	
 		for (node<Integer> temp = L1.head; temp != null; temp = temp.next)
 		{
-			for (node<Integer> helper = temp.next; helper != null; helper = helper.next)
-			{
-				if( temp.data == helper.data )
-				{
-					L1.deleteNode(helper);
-				}
-
-			}
+	        for (node<Integer> helper = temp; helper != null && helper.next != null; helper = helper.next)
+	        {
+	            //start at helper.next so that temp doesn't delete it's self
+	            if( temp.data == helper.next.data )
+	                helper.next = helper.next.next;
+	        }
 		}
 	}
 	
@@ -167,12 +158,12 @@ public class LinkedList<AnyType> {
 		// create another linked list (this time, one that holds strings)
 		LinkedList<String> L2 = new LinkedList<String>();
 		
-		L2.insert("Sean");
-		L2.insert("Szumlanski");
-		L2.insert("wrote");
-		L2.insert("this");
-		L2.insert("fancy");
-		L2.insert("beast!");
+		L2.insert("Llamas");
+		L2.insert("eat");
+		L2.insert("very sexy");
+		L2.insert("critical thinking");
+		L2.insert("Paper clips annd now I'm ");
+		L2.insert("daydreaming");
 
 		// print the new list to verify everything got in there correctly
 		while (!L2.isEmpty())
