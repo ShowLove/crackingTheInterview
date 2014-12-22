@@ -1,6 +1,7 @@
 
 
 import java.io.*;
+import java.util.Hashtable;
 
 // A node class whose 'data' field is designed to hold any type of data.
 class node<AnyType> {
@@ -102,7 +103,7 @@ public class LinkedList<AnyType> {
 	}
 	
 	//This eliminates the duplicates in O(n^2)
-	void deleteDuplicates( LinkedList<Integer> L1 )
+	void deleteDuplicatesInt( LinkedList<Integer> L1 )
 	{	
 		for (node<Integer> temp = L1.head; temp != null; temp = temp.next)
 		{
@@ -115,7 +116,25 @@ public class LinkedList<AnyType> {
 		}
 	}
 	
-	
+	//This eliminates duplicates in time n
+	void deleteDuplicatesIntFast( LinkedList<Integer> L1 )
+	{
+		Hashtable< Integer, Integer > values = new Hashtable< Integer, Integer >();
+		values.put( L1.head.data, 1); //do this so we can use temp.next and don't have to store previous node
+		
+		for (node<Integer> temp = L1.head; temp != null && temp.next != null; temp = temp.next)
+		{	
+			//values.put(temp.next.data, 1);
+			
+			//delete if we have encountered else put it in our hash table
+			if( values.containsKey(temp.next.data) )
+			{
+				temp.next = temp.next.next;
+			}		
+			
+			values.put(temp.next.data, 1);
+		}
+	}
 
 	// returns true if the list is empty, false otherwise
 	boolean isEmpty() {
@@ -144,14 +163,14 @@ public class LinkedList<AnyType> {
 		L1.insert(9);
 		L1.insert(25);
 		L1.insert(9);
-		//L1.insert(9);
+		L1.insert(9);
 		//L1.insert(9);
 
 		// print the list to verify everything got in there correctly
 		System.out.println("Printing integer linked list");
 		L1.printList();
 		System.out.println("Printing DEL-repeaded LL");
-		L1.deleteDuplicates(L1);
+		L1.deleteDuplicatesInt(L1);
 		L1.printList();
 
 
