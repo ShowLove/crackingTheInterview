@@ -113,7 +113,7 @@ public class LinkedList<AnyType> {
 	            if( temp.data == helper.next.data )
 	                helper.next = helper.next.next;
 	            //account for the corner case where the last number is a duplicate
-				if( temp.next.next == null )
+				if( temp.next.next == null && values.containsKey( L1.tail ) )
 				{
 					temp.next = null;
 					L1.tail = temp;
@@ -138,11 +138,11 @@ public class LinkedList<AnyType> {
 				temp.next = temp.next.next;
 			}
 			
-			//Put this before we try to access a null node
+			//Put this node in hashtable before we try to access a null node
 			values.put(temp.next.data, 1);
 			
 			//account for the corner case where the last number is a duplicate
-			if( temp.next.next == null )
+			if( temp.next.next == null && values.containsKey( L1.tail ) )
 			{
 				temp.next = null;
 				L1.tail = temp;
@@ -184,7 +184,7 @@ public class LinkedList<AnyType> {
 		System.out.println("Printing integer linked list");
 		L1.printList();
 		System.out.println("Printing DEL-repeaded LL");
-		L1.deleteDuplicatesInt(L1);
+		L1.deleteDuplicatesIntFast(L1);
 		L1.printList();
 
 
