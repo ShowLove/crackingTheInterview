@@ -112,6 +112,12 @@ public class LinkedList<AnyType> {
 	            //start at helper.next so that temp doesn't delete it's self
 	            if( temp.data == helper.next.data )
 	                helper.next = helper.next.next;
+	            //account for the corner case where the last number is a duplicate
+				if( temp.next.next == null )
+				{
+					temp.next = null;
+					L1.tail = temp;
+				}
 	        }
 		}
 	}
@@ -126,13 +132,21 @@ public class LinkedList<AnyType> {
 		{	
 			//values.put(temp.next.data, 1);
 			
-			//delete if we have encountered else put it in our hash table
+			//delete if we have encountered it delete it else put it in our hash table
 			if( values.containsKey(temp.next.data) )
 			{
 				temp.next = temp.next.next;
-			}		
+			}
 			
+			//Put this before we try to access a null node
 			values.put(temp.next.data, 1);
+			
+			//account for the corner case where the last number is a duplicate
+			if( temp.next.next == null )
+			{
+				temp.next = null;
+				L1.tail = temp;
+			}				
 		}
 	}
 
