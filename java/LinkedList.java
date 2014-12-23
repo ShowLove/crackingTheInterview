@@ -81,6 +81,12 @@ public class LinkedList<AnyType> {
 		return temp;
 	}
 	
+	// returns true if the list is empty, false otherwise
+	boolean isEmpty() {
+		return (head == null);
+	}
+		
+	//This deletes a node in time n
 	node<AnyType> deleteNode(node<AnyType> data)
 	{
 		node<AnyType> helper = head;
@@ -113,7 +119,7 @@ public class LinkedList<AnyType> {
 	            if( temp.data == helper.next.data )
 	                helper.next = helper.next.next;
 	            //account for the corner case where the last number is a duplicate
-				if( temp.next.next == null && values.containsKey( L1.tail ) )
+				if( temp.next.next == null && temp.data == L1.tail.data )
 				{
 					temp.next = null;
 					L1.tail = temp;
@@ -149,11 +155,8 @@ public class LinkedList<AnyType> {
 			}				
 		}
 	}
-
-	// returns true if the list is empty, false otherwise
-	boolean isEmpty() {
-		return (head == null);
-	}
+	
+	//Implement an algorithm to find the kth to last element of a singly linked list.
 
 	public static void main(String [] args) {
 
