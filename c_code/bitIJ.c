@@ -4,7 +4,7 @@
 
 /*
 
-u are given two 32-bit numbers, N andM, and two bit positions, i and j. Write a
+u are given two 32-bit numbers, N and M, and two bit positions, i and j. Write a
 method to insert M into Nsuch that M starts at bit j and ends at bit i. You can assume
 that the bits j through i have enough space to fit all ofM. That is, ifM= 10011,
 you can assume that there are at least 5 bits between j and i. You would not, for
