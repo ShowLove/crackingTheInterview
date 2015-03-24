@@ -113,7 +113,7 @@ bytes, write a method to rotate the image by 90 degrees. Can you do this in plac
 				bottom[last][last - offset]
 				
 				// top -> right
-				top[i][last];
+				Right[i][last];
 			}
 		}
  
