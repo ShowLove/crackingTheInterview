@@ -87,6 +87,37 @@ bytes, write a method to rotate the image by 90 degrees. Can you do this in plac
 		System.out.println("After array:");
 		object.printDoubleArray(MxN, 4);
  */
+ 
+ 
+ /* explination
+ 		for (int layer = 0; layer < n / 2; ++layer) { //Onion Layer
+			
+			int first = layer; //First of layer we are on
+			int last = n - 1 - layer;  //Last of layer we are on "-1 is 0 offset"
+			
+			for(int i = first; i < last; ++i) {  //from first to last of layer we are on
+				
+				//Save offset: amount moved within onion layer 
+				int offset = i - first; // offset = How far we've moved on current layer
+
+				// save top
+				[first][i]; //[layer we are on][How far we've moved on layer]
+				
+				 // left -> top
+				Left[last-offset][first];
+				
+				// bottom -> left
+				bottom[last][last - offset];
+				
+				// right -> bottom
+				matrix[last][last - offset] = matrix[i][last];
+				
+				// top -> right
+				top[i][last];
+			}
+		}
+ 
+ */
 	
 
 }
