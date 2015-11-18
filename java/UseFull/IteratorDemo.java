@@ -22,13 +22,16 @@ public class IteratorDemo {
       }
       System.out.println();
       
-	  // Modify objects being iterated
+      System.out.println("Index1("+al.get(1)+")");
+      
+     // Modify objects being iterated
       ListIterator<String> litr = al.listIterator();
       while(litr.hasNext()) {
          Object element = litr.next();
          litr.set(element + "+");
       }
       System.out.print("Modified contents of al: ");
+      //Print modified contents
       itr = al.iterator();
       while(itr.hasNext()) {
          Object element = itr.next();
@@ -45,3 +48,10 @@ public class IteratorDemo {
        System.out.println();
     }
 }
+
+/* OUTPUT
+Original contents of al: C A E B D F 
+Index1(A)
+Modified contents of al: C+ A+ E+ B+ D+ F+ 
+Modified list backwards: F+ D+ B+ E+ A+ C+ 
+*/
